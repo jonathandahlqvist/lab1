@@ -9,8 +9,8 @@ class CarTests {
 
     @BeforeEach
     void setUp() {
-        volvo = new Volvo240();
-        saab = new Saab95();
+        volvo = new Volvo240(Color.black);
+        saab = new Saab95(Color.red);
     }
 
     @Test

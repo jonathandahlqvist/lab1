@@ -4,16 +4,16 @@ public abstract class CarModel implements Movable {
     private final int nrDoors; // Number of doors on the car
     private final double enginePower; // Engine power of the car
     private double currentSpeed; // The current speed of the car
-    private Color color; // Color of the car
+    private Color clr; // Color of the car
     private double x;
     private double y;
     private int direction; // north = 0, east = 1, south = 2, west = 3
 
-    public CarModel(int nrDoors, double enginePower, Color color){
+    public CarModel(int nrDoors, double enginePower, Color clr){
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
         this.currentSpeed = 0;
-        this.color = color;
+        this.clr = clr;
         this.x = 0;
         this.y = 0;
         this.direction = 0;
@@ -61,11 +61,11 @@ public abstract class CarModel implements Movable {
     }
 
     public Color getColor(){
-        return color;
+        return clr;
     }
 
-    public void setColor(Color clr) {
-        color = clr;
+    protected void setColor(Color clr) {
+        this.clr = clr;
     }
 
     protected void setCurrentSpeed(double speed) {
