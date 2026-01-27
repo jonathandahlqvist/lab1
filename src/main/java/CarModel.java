@@ -56,6 +56,10 @@ public abstract class CarModel implements Movable {
         return currentSpeed;
     }
 
+    public double[] getPosition() {
+        return new double[] {x,y};
+    }
+
     public Color getColor(){
         return color;
     }
@@ -64,7 +68,7 @@ public abstract class CarModel implements Movable {
         color = clr;
     }
 
-    public void setCurrentSpeed(double speed) {
+    protected void setCurrentSpeed(double speed) {
         currentSpeed = speed; }
 
     public void startEngine(){
@@ -76,5 +80,21 @@ public abstract class CarModel implements Movable {
 
     public int getDirection() {
         return direction;
+    }
+
+    public void gas(double amount){
+        if (amount >= 0 && amount <= 1) {
+            incrementSpeed(amount);
+        } else if (amount > 1) {
+            incrementSpeed(1);
+        }
+    }
+
+    public void brake(double amount) {
+        if (amount >= 0 && amount <= 1) {
+            decrementSpeed(amount);
+        } else if (amount > 1) {
+            decrementSpeed(1);
+        }
     }
 }

@@ -1,13 +1,11 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.awt.*;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class CarTests {
-    CarModel volvo;
-    CarModel saab;
+    Volvo240 volvo;
+    Saab95 saab;
 
     @BeforeEach
     void setUp() {
@@ -56,36 +54,3 @@ class CarTests {
 
 
 }
-
-/* Vad ska testas
-SpeedFactor x2
-IncrementSpeed x2
-DecrementSpeed x2
-Getters
-    GetNrDoors
-    GetEnginepower
-    getCurrentSpeed
-    getColor
-Setters
-    setColor
-    setCurrentSpeed
-Start + StopEngine
-Move + TurnLeft /right
-
-
- */
-
-/*
-assertEquals(expected, actual);
-assertNotEquals(unexpected, actual);
-
-assertTrue(condition);
-assertFalse(condition);
-
-assertNull(object);
-assertNotNull(object);
-
-assertThrows(Exception.class, () -> {
-    methodThatShouldFail();
-});
- */
