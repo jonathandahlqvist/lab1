@@ -1,3 +1,5 @@
+package lab1;
+
 import java.awt.*;
 
 public abstract class CarModel implements Movable {
@@ -22,15 +24,23 @@ public abstract class CarModel implements Movable {
 
     public void move() {
         switch (direction) {
-            case 0: {y+=currentSpeed;}
-            case 1: {x+=currentSpeed;}
-            case 2: {y-=currentSpeed;}
-            case 3: {x-=currentSpeed;}
+            case 0:
+                y+=currentSpeed;
+                break;
+            case 1:
+                x+=currentSpeed;
+                break;
+            case 2:
+                y-=currentSpeed;
+                break;
+            case 3:
+                x-=currentSpeed;
+                break;
         }
     }
 
     public void turnLeft() {
-        direction = (direction - 1) % 4;
+        direction = (direction + 3) % 4;
     }
 
     public void turnRight() {
