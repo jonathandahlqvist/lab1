@@ -152,20 +152,32 @@ class CarTests {
     }
 
     @Test
-    void testMaxSpeed() {
+    void testVolvoMaxSpeed() {
         volvo.setCurrentSpeed(volvo.getEnginePower());
         volvo.gas(1);
         assertEquals(volvo.getEnginePower(), volvo.getCurrentSpeed());
     }
 
     @Test
-    void testMinSpeed() {
+    void testVolvoMinSpeed() {
         volvo.setCurrentSpeed(0);
         volvo.brake(1);
         assertEquals(0, volvo.getCurrentSpeed());
     }
 
+    @Test
+    void testSaabMaxSpeed() {
+        saab.setCurrentSpeed(saab.getEnginePower());
+        saab.gas(1);
+        assertEquals(saab.getEnginePower(), saab.getCurrentSpeed());
+    }
 
+    @Test
+    void testSaabMinSpeed() {
+        saab.setCurrentSpeed(0);
+        saab.brake(1);
+        assertEquals(0, saab.getCurrentSpeed());
+    }
 
     @Test
     void testMove() {
