@@ -1,4 +1,4 @@
-package lab1;
+package labs;
 
 public interface Movable {
     void move();
