@@ -2,7 +2,7 @@ package lab1;
 
 import java.awt.*;
 
-public class Volvo240 extends CarModel {
+public class Volvo240 extends Vehicle {
 
     private final static double trimFactor = 1.25;
 
@@ -15,10 +15,10 @@ public class Volvo240 extends CarModel {
     }
 
     protected void incrementSpeed(double amount){
-        setCurrentSpeed(Math.min(getCurrentSpeed() + speedFactor() * amount,getEnginePower()));
+        incrementSpeedHelper(amount);
     }
 
     protected void decrementSpeed(double amount){
-        setCurrentSpeed(Math.max(getCurrentSpeed() - speedFactor() * amount,0));
+        decrementSpeedHelper(amount);
     }
 }

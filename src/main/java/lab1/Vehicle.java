@@ -2,7 +2,7 @@ package lab1;
 
 import java.awt.*;
 
-public abstract class CarModel implements Movable {
+public abstract class Vehicle implements Movable {
     private final int nrDoors; // Number of doors on the car
     private final double enginePower; // Engine power of the car
     private double currentSpeed; // The current speed of the car
@@ -11,7 +11,7 @@ public abstract class CarModel implements Movable {
     private double y;
     private int direction; // north = 0, east = 1, south = 2, west = 3
 
-    public CarModel(int nrDoors, double enginePower, Color clr){
+    public Vehicle(int nrDoors, double enginePower, Color clr){
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
         this.currentSpeed = 0;
@@ -74,6 +74,11 @@ public abstract class CarModel implements Movable {
         return clr;
     }
 
+    public void setPosition(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
+
     protected void setColor(Color clr) {
         this.clr = clr;
     }
@@ -107,4 +112,14 @@ public abstract class CarModel implements Movable {
             decrementSpeed(1);
         }
     }
+
+    public void incrementSpeedHelper(double amount) {
+        setCurrentSpeed(Math.min((getCurrentSpeed() + speedFactor() * amount), getEnginePower()));
+    }
+
+    public void decrementSpeedHelper(double amount) {
+        setCurrentSpeed(Math.max((getCurrentSpeed() - speedFactor() * amount),0));
+    }
+
+
 }
