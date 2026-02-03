@@ -16,24 +16,22 @@ public class Scania extends Vehicle {
         }
     }
 
-    public TruckBed getTruckBed() {
-        return truckbed;
+    public int getAngle() {
+        return truckbed.getAngle();
     }
 
     protected double speedFactor(){
         return getEnginePower() * 0.005;
     }
 
-    protected void incrementSpeed(double amount){
+    @Override
+    public void gas(double amount) {
         if (truckbed.getAngle() == 0) {
-            incrementSpeedHelper(amount);
+            super.gas(amount);
         } else {
             System.out.println("Cannot start: Truck bed is up");
         }
     }
 
-    protected void decrementSpeed(double amount){
-        decrementSpeedHelper(amount);
-    }
 }
 

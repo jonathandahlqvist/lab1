@@ -26,17 +26,17 @@ public class CarTransportTests {
 
     @Test
     void testCarPositionWhenOnTransport(){
-        volvo.setPosition(0,0);
-        cartransport.setPosition(5,2);
+        cartransport.setX(5);
+        cartransport.setY(2);
         cartransport.lowerRamp();
         cartransport.addCar(volvo);
-        cartransport.incrementSpeed(1);
-        assertEquals(5, volvo.getPosition()[0]);
-        assertEquals(2, volvo.getPosition()[1]);
+        cartransport.gas(1);
+        assertEquals(5, volvo.getX());
+        assertEquals(2, volvo.getY());
         cartransport.move();
-        assertEquals(cartransport.getPosition()[0], volvo.getPosition()[0]);
-        assertEquals(cartransport.getPosition()[1], volvo.getPosition()[1]);
-        assertNotEquals(7,cartransport.getPosition()[0]+cartransport.getPosition()[1]);
+        assertEquals(cartransport.getX(), volvo.getX());
+        assertEquals(cartransport.getY(), volvo.getY());
+        assertNotEquals(7,cartransport.getX()+cartransport.getY());
     }
 
     @Test

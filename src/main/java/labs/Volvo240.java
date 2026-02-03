@@ -14,11 +14,4 @@ public class Volvo240 extends Vehicle {
         return getEnginePower() * 0.01 * trimFactor;
     }
 
-    protected void incrementSpeed(double amount){
-        incrementSpeedHelper(amount);
-    }
-
-    protected void decrementSpeed(double amount){
-        decrementSpeedHelper(amount);
-    }
 }

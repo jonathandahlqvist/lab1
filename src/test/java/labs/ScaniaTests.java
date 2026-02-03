@@ -30,8 +30,8 @@ public class ScaniaTests {
         scania.setCurrentSpeed(0);
         scania.changeAngle(-1000);
         scania.changeAngle(5);
-        assertEquals(5, scania.getTruckBed().getAngle());
-        scania.incrementSpeed(5);
+        assertEquals(5, scania.getAngle());
+        scania.gas(5);
         assertEquals(0, scania.getCurrentSpeed());
     }
 }

@@ -7,8 +7,7 @@ public abstract class Vehicle implements Movable {
     private final double enginePower; // Engine power of the car
     private double currentSpeed; // The current speed of the car
     private Color clr; // Color of the car
-    private double x;
-    private double y;
+    private final Point2D.Double position;
     private int direction; // north = 0, east = 1, south = 2, west = 3
 
     public Vehicle(int nrDoors, double enginePower, Color clr){
@@ -16,8 +15,7 @@ public abstract class Vehicle implements Movable {
         this.enginePower = enginePower;
         this.currentSpeed = 0;
         this.clr = clr;
-        this.x = 0;
-        this.y = 0;
+        this.position = new Point2D.Double(0.0,0.0);
         this.direction = 0;
         stopEngine();
     }
@@ -47,11 +45,6 @@ public abstract class Vehicle implements Movable {
         direction = (direction + 1) % 4;
     }
 
-
-    protected abstract void incrementSpeed(double amount);
-
-    protected abstract void decrementSpeed(double amount);
-
     protected abstract double speedFactor();
 
     public int getNrDoors(){
@@ -66,17 +59,24 @@ public abstract class Vehicle implements Movable {
         return currentSpeed;
     }
 
-    public double[] getPosition() {
-        return new double[] {x,y};
+    public double getX() {
+        return position.x;
+    }
+
+    public double getY() {
+        return position.y;
     }
 
     public Color getColor(){
         return clr;
     }
 
-    public void setPosition(double x, double y) {
-        this.x = x;
-        this.y = y;
+    protected void setX(double x) {
+        position.x = x;
+    }
+
+    protected void setY(double y) {
+        position.y = y;
     }
 
     protected void setColor(Color clr) {
@@ -84,7 +84,8 @@ public abstract class Vehicle implements Movable {
     }
 
     protected void setCurrentSpeed(double speed) {
-        currentSpeed = speed; }
+        currentSpeed = speed;
+    }
 
     public void startEngine(){
         currentSpeed = 0.1;
@@ -93,7 +94,7 @@ public abstract class Vehicle implements Movable {
     public void stopEngine(){
         currentSpeed = 0; }
 
-    public int getDirection() {
+    public double getDirection() {
         return direction;
     }
 
@@ -113,11 +114,11 @@ public abstract class Vehicle implements Movable {
         }
     }
 
-    public void incrementSpeedHelper(double amount) {
+    private void incrementSpeed(double amount) {
         setCurrentSpeed(Math.min((getCurrentSpeed() + speedFactor() * amount), getEnginePower()));
     }
 
-    public void decrementSpeedHelper(double amount) {
+    private void decrementSpeed(double amount) {
         setCurrentSpeed(Math.max((getCurrentSpeed() - speedFactor() * amount),0));
     }
 

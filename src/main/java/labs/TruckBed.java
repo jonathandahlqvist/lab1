@@ -1,9 +1,9 @@
 package labs;
 
 public class TruckBed {
-    private double angle;
+    private int angle;
 
-    public double getAngle() {
+    public int getAngle() {
         return angle;
     }
 

@@ -34,8 +34,8 @@ public class CarTransport extends Vehicle {
             throw new IllegalArgumentException("Cannot load another CarTransport");
         }
 
-        if (Math.abs(car.getPosition()[0] - this.getPosition()[0]) >= 10
-                || Math.abs(car.getPosition()[1] - this.getPosition()[1]) >= 10) {
+        if (Math.abs(car.getX() - this.getX()) >= 10
+                || Math.abs(car.getY() - this.getY()) >= 10) {
             throw new IllegalArgumentException("Car too far away");
         }
 
@@ -44,7 +44,8 @@ public class CarTransport extends Vehicle {
         }
 
         parkedCars.push(car);
-        car.setPosition(this.getPosition()[0], this.getPosition()[1]);
+        car.setX(this.getX());
+        car.setY(this.getY());
     }
 
     public Stack<Vehicle> getParkedCars() {
@@ -56,24 +57,16 @@ public class CarTransport extends Vehicle {
         }
 
         Vehicle P = parkedCars.pop();
-        P.setPosition(this.getPosition()[0]+1, this.getPosition()[1]);
+        P.setX(this.getX()+1);
+        P.setY(this.getY());
     }
 
     @Override
     public void move() {
         super.move();
-        double[] pos = this.getPosition();
         for (Vehicle p: parkedCars) {
             p.setPosition(pos[0], pos[1]);
         }
-    }
-
-    protected void incrementSpeed(double amount) {
-        incrementSpeedHelper(amount);
-    }
-
-    protected void decrementSpeed(double amount) {
-        decrementSpeedHelper(amount);
     }
 
     protected double speedFactor() {
